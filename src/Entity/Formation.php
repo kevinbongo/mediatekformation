@@ -20,16 +20,17 @@ class Formation
     private $id;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=false)
      */
     private $publishedAt;
 
     /**
-     * @ORM\Column(type="string", length=91, nullable=true)
+     * @ORM\Column(type="string", length=91, nullable=false)
      */
     private $title;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -50,12 +51,10 @@ class Formation
     private $videoId;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Niveau::class, inversedBy="formations")
+     * @ORM\ManyToOne(targetEntity=Niveau::class, inversedBy="formations",nullable=false)
      */
     private $niveau;
-    /**
-     * @ORM\Column(type="string", length=91, nullable=true)
-     */
+
 
     public function getId(): ?int
     {

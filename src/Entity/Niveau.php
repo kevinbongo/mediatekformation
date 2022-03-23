@@ -20,9 +20,9 @@ class Niveau
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=false)
      */
-    private $intituleniveau;
+    private $leveltitle;
 
     /**
      * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="niveau")
@@ -39,14 +39,14 @@ class Niveau
         return $this->id;
     }
 
-    public function getIntituleniveau(): ?string
+    public function getLeveltitle(): ?string
     {
-        return $this->intituleniveau;
+        return $this->leveltitle;
     }
 
-    public function setIntituleniveau(string $intituleniveau): self
+    public function setLeveltitle(string $leveltitle): self
     {
-        $this->intituleniveau = $intituleniveau;
+        $this->leveltitle = $leveltitle;
 
         return $this;
     }

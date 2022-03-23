@@ -40,11 +40,10 @@ class NiveauRepository extends ServiceEntityRepository
     public function findOneByName($value): ?Niveau
     {
         return $this->createQueryBuilder('n')
-            ->where('n.intituleniveau LIKE :val')
-            ->setParameter('val', '%'.$value.'%')
+            ->where('n.leveltitle LIKE :val')
+            ->setParameter('val', '%' . $value . '%')
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
 
     /**
@@ -54,17 +53,17 @@ class NiveauRepository extends ServiceEntityRepository
      * @param type $valeur
      * @return Niveau[]
      */
-    public function findByContainValue($champ, $valeur): array{
-        if($valeur==""){
+    public function findByContainValue($champ, $valeur): array
+    {
+        if ($valeur == "") {
             return $this->createQueryBuilder('f')
-                ->orderBy('f.'.$champ, 'ASC')
+                ->orderBy('f.' . $champ, 'ASC')
                 ->getQuery()
                 ->getResult();
-        }else{
+        } else {
             return $this->createQueryBuilder('f')
-                ->where('f.'.$champ.' LIKE :valeur')
-                ->setParameter('valeur', $valeur)
-                ->setParameter('valeur', '%'.$valeur.'%')
+                ->where('f.' . $champ . ' LIKE :valeur')
+                ->setParameter('valeur', '%' . $valeur . '%')
                 ->getQuery()
                 ->getResult();
         }
